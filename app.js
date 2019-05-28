@@ -12,8 +12,26 @@ const storage = multer.diskStorage({
 });
 
 const upload = multer({
-    storage: storage
+    storage: storage,
+    fileFilter: function(req, file, cb){
+        checkFileType(file, cb);
+    }
 }).single('myimage');
+
+function checkFileType(file, cb){
+    // file extension
+    const filetypes = /jpeg|jpg|png|gif/;
+    //check ext
+    const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
+    //check mine type
+    const  mimetype = filetypes.test(file.mimetype);
+
+    if(mimetype && extname){
+        return cb(null, true);
+    } else{
+        cb('Error Images Only!');
+    }
+}
 
 const port = 4200;
 
