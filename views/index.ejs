@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html>
 <head>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 </head>
@@ -6,18 +7,18 @@
  
   <div  class="container">
       <h1>File Upload</h1>
-      
-  <form action="/upload" method="POST">
+      <%= typeof msg != 'undefined' ? msg: ' ' %>
+  <form action="/upload" method="POST" enctype="multipart/form-data">
         <div class="file-field input-field">
           <div class="btn">
             <span>File</span>
-            <input type="file">
+            <input name="myimage" type="file">
           </div>
           <div class="file-path-wrapper">
-            <input name="myimage" class="file-path validate" type="text">
+            <input class="file-path validate" type="text">
           </div>
         </div>
-        <button typr="submit" class="btn"></button>
+        <button typr="submit" class="btn">submit</button>
       </form>
   </div>
 
