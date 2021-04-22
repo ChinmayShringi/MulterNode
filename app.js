@@ -55,9 +55,10 @@ app.post('/upload', (req,res) => {
                 msg: 'Error no file selected'
             });
          } else{
+             console.log(req.file.filename);
                 res.render('index',{
                     msg: 'File Uploaded',
-                    file: `uploads/ ${req.file.filename}`
+                    file: `uploads/${req.file.filename}`
                  });
             }
         }
